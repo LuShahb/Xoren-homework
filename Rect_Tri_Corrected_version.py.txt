@@ -1,0 +1,69 @@
+import math
+
+class Polygon:
+    def __init__(self,num_sides):
+        self.num_sides = num_sides
+ 
+    def Triangle_or_Rectangle(self):
+        if self.num_sides == 3:
+            return "Triangle"
+        elif self.num_sides == 4:
+            return "Rectangle"
+        else: return "Polygon"
+ 
+    def how_many_sides(self):
+        return self.num_sides
+ 
+    def area(self):
+        return "No Area"
+ 
+    def perimeter(self):
+        return "No Perimeter"
+ 
+ 
+class triangle(Polygon):
+    def __init__(self,a,b,c):
+        Polygon.__init__(self, 3)
+        self.a = a
+        self.b = b
+        self.c = c
+ 
+    def area(self):
+        s = (self.a + self.b + self.c)/2
+        area = math.sqrt(s*((s-self.a)*(s-self.b)*(s-self.c)))
+        return area
+    
+ 
+    def perimeter(self):
+        return self.a + self.b + self.c
+ 
+ 
+class rectangle(Polygon):
+    def __init__(self,breadth,length):
+        Polygon.__init__(self, 4)
+        self.breadth = breadth
+        self.length = length
+ 
+    def area(self):
+        return self.length * self.breadth
+ 
+    def perimeter(self):
+        return 2 * (self.length + self.breadth)
+ 
+ 
+ 
+ 
+def main():
+    tri=triangle(2,2,2)
+    rect=rectangle(2,3)
+    figures = [tri,rect]
+    for fig in figures:
+       
+        print ("Type of Polygon =>", fig.Triangle_or_Rectangle())
+        print ("Sides =", fig.how_many_sides())
+        print ("Area =", fig.area())
+        print ("Perimeter =", fig.perimeter())
+
+if __name__ == "__main__":
+    main()
+    
